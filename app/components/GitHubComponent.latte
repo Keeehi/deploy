@@ -1,0 +1,18 @@
+<div class="alert alert-warning" role="alert">... <a n:href="githubLogin-open!">Login using github</a></div>
+
+<div class="panel panel-primary">
+    <form  class="panel-heading" role="search" n:snippet="search">
+        <input type="text" class="form-control" placeholder="Search">
+    </form>
+    <div class="list-group" n:snippet="body">
+        <a href="#" n:class="list-group-item, $iterator->getCounter()%4 == 1 ? repository-is-managed" n:foreach="$repositories as $repository">
+            <span>
+                <span class="label label-info">{$repository->owner->login}</span><strong class="repository"> /&nbsp;{$repository->name} </strong>{if !$repository->private}<span class="label label-success">Public</span>{else}<span class="label label-warning">Private</span>{/if}
+                <span class="label label-danger" n:if="$iterator->getCounter()%4 == 1">managed</span>
+            </span>
+        </a>
+    </div>
+    <div class="panel-footer text-right">
+        <a type="button" class="btn btn-primary ajax" n:href="Click">Next</a>
+    </div>
+</div>

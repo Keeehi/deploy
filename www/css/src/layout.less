@@ -1,0 +1,197 @@
+html, body {
+    height: 100%;
+}
+
+.item {
+    margin: 2px 0;
+    border: 1px solid transparent;
+    border-radius: @border-radius-base;
+    .button-size(@padding-base-vertical; @padding-base-horizontal; @font-size-base; @line-height-base; @border-radius-base);
+    .button-variant(@btn-default-color, @btn-default-bg, @btn-default-border)
+}
+
+.ui-sortable-placeholder {
+    background-color: darken(@btn-default-bg, 20%);
+    border-color: darken(@btn-default-border, 24%);
+}
+
+.ui-sortable .glyphicon-resize-vertical {
+    cursor: move;
+    padding: 3px 0;
+    margin-right: 5px;
+    border: 1px solid @btn-default-border;
+    background-color: @btn-default-bg;
+    border-radius: @border-radius-base;
+}
+
+.modal-dialog .panel .panel-body .controls {
+    padding: @panel-body-padding 0 0;
+    margin-top: @panel-body-padding;
+    text-align: right;
+    border-top: 1px solid @panel-inner-border;
+}
+
+strong.repository {
+    font-size: 160%;
+    vertical-align: middle;
+}
+
+.repository-is-managed {
+    background-color: #f2dede;
+}
+a.repository-is-managed:hover {
+    background-color: #e4b9b9;
+}
+
+.list-group-item {
+    word-break: break-all;
+}
+
+.list-group-item > span {
+    overflow: hidden;
+    display: block;
+}
+
+
+
+noscript {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+    z-index: 16777270;
+    display:table;
+
+    >div {
+        display:table-cell;
+        vertical-align:middle;
+        text-align: center;
+        width:100%;
+        height:100%;
+        overflow: hidden;
+
+        .alert {
+            display: inline-block;
+            margin: 0;
+        }
+    }
+}
+
+body.server {
+    background-color: #CCCCCC;
+
+    @login-width: 340px;
+    @login-min-width: (@grid-gutter-width * 2 + @login-width + 30px);
+    @hack: ~"#";
+
+    @media (min-width: @login-min-width) {
+        background-color: #A0CD3A;
+    }
+
+    .container {
+        height: 100%;
+
+        > div {
+            @media (min-width: @login-min-width) {
+                display: table;
+                height: 100%;
+                @{hack}position: relative;
+                overflow: hidden;
+                margin: 0 auto;
+            }
+
+            > div {
+
+                @media (min-width: @login-min-width) {
+                    _position: absolute;
+                    @{hack}top: 50%;
+                    display: table-cell;
+                    vertical-align: middle;
+                }
+            }
+        }
+    }
+
+    #content {
+        @{hack}position: relative;
+        @{hack}top: -50%;
+        padding: (@grid-gutter-width / 2) 0;
+
+        @media (min-width: @login-min-width) {
+            margin-top: (@grid-gutter-width / 2);
+            background-color: #CCCCCC;
+            padding: (@grid-gutter-width / 2);
+            border: 1px solid #BBBBBB;
+
+            -webkit-box-shadow: 0px 0px 25px -5px rgba(61, 77, 25, 1);
+            -moz-box-shadow: 0px 0px 25px -5px rgba(61, 77, 25, 1);
+            box-shadow: 0px 0px 25px -5px rgba(61, 77, 25, 1);
+
+            width: @login-width;
+            margin: 0 15px;
+
+            border-radius: @border-radius-large;
+        }
+    }
+
+    h1 {
+        font-weight: bold;
+        margin-top: (@line-height-computed / 2);
+    }
+
+    label {
+        font-size: @font-size-large;
+        line-height: @line-height-large;
+    }
+
+    .hr {
+        margin-top: @line-height-computed;
+        margin-bottom: @line-height-computed;
+        border: none;
+        height: 2px;
+        color: #EEEEEE;
+        background-color: #EEEEEE;
+        text-align: center;
+
+        span {
+            position: relative;
+            background-color: #CCCCCC;
+            padding: 0 8px;
+            top: (@line-height-computed / -2);
+        }
+    }
+
+    .more-info {
+        border-bottom: 1px dotted;
+        cursor: help;
+    }
+
+    .checkbox label {
+        font-weight: bold;
+    }
+
+}
+
+body.error {
+    color: #333;
+    background: white;
+    width: 500px;
+    margin: 100px auto;
+
+    h1 {
+        font: bold 47px/1.5 sans-serif;
+        margin: .6em 0;
+    }
+
+    p {
+        font: 21px/1.5 Georgia,serif;
+        margin: 1.5em 0;
+    }
+
+    small {
+        font-size: 70%;
+        color: gray;
+    }
+}

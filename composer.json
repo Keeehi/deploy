@@ -1,0 +1,13 @@
+{
+    "name": "keeehi/deploy",
+    "require": {
+        "nette/nette": "~2.3",
+        "milo/github-api": "~1.4"
+    },
+    "authors": [
+        {
+            "name": "Keeehi",
+            "email": "honzacejhon@gmail.com"
+        }
+    ]
+}

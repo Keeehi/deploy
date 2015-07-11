@@ -1,0 +1,119 @@
+{block content}
+    <!-- BEGIN: Modals  -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                </div>
+                <div class="modal-body">
+
+                    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                      <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="headingOne" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                          <h4 class="panel-title">Collapsible Group Item #1</h4>
+                        </div>
+                        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                          <div class="panel-body">
+                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                            <div class="controls">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                <button type="button" class="btn btn-success">Add</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="headingTwo" class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                          <h4 class="panel-title">Collapsible Group Item #2</h4>
+                        </div>
+                        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                          <div class="panel-body">
+                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                          </div>
+                        </div>
+                      </div>
+                      <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="headingThree" class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                          <h4 class="panel-title">Collapsible Group Item #3</h4>
+                        </div>
+                        <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                          <div class="panel-body">
+                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END: Modals  -->
+
+    <div class="page-header">
+        <h1>New repo</h1>
+    </div>
+
+
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h4 class="panel-title">Pull sttings</h4>
+        </div>
+        <div class="panel-body">
+            <ul>
+                <li>pull</li>
+                <li>pre buil</li>
+                <li>buil</li>
+                <li>post buil</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h4 class="panel-title">Before build</h4>
+        </div>
+        <div class="panel-body">
+            <ul class="nav nav-pills nav-stacked" id="sortable">
+              <li class="item"><span class="glyphicon glyphicon-resize-vertical" aria-hidden="true"></span> 1111</li>
+              <li class="item"><span class="glyphicon glyphicon-resize-vertical" aria-hidden="true"></span> 2222</li>
+              <li class="item"><span class="glyphicon glyphicon-resize-vertical" aria-hidden="true"></span> 3333</li>
+              <li class="item"><span class="glyphicon glyphicon-resize-vertical" aria-hidden="true"></span> 4444</li>
+            </ul>
+        </div>
+        <div class="panel-footer">
+            <div class="btn-group">
+                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">Add</button>
+            </div>
+        </div>
+    </div>
+{/block}
+
+{block scripts}
+{include parent}
+    {*<script src="http://jush.sourceforge.net/jush.js"></script>*}
+    {*<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>*}
+    {*<script src="//cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>*}
+    <script>
+    $(function() {
+        $( "#sortable" ).sortable({
+            placeholder: "item ui-sortable-placeholder",
+            forcePlaceholderSize: true,
+            handle: ".glyphicon-resize-vertical",
+            axis: "y",
+            containment: "parent",
+            tolerance: "pointer",
+            opacity: 0.85
+        });
+        $( "#sortable" ).disableSelection();
+    });
+    </script>
+{/block}
+
+
+{block head}
+<style>
+</style>
+{/block}

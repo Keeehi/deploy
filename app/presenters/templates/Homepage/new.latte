@@ -1,0 +1,194 @@
+{block contentDeploy}
+    <!-- BEGIN: Modals  -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Task</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingOne" class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                <h4 class="panel-title">Copy</h4>
+                            </div>
+                            <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                                <div class="panel-body">
+                                    <form>
+                                        <div class="form-group">
+                                            <label for="exampleInputPassword1">From:</label>
+                                            <input type="text" class="form-control" placeholder="/var/www/a.txt">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputPassword1">To:</label>
+                                            <input type="text" class="form-control" placeholder="/var/www/b.txt">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputPassword1">Description: <small>(optional)</small></label>
+                                            <input type="text" class="form-control" placeholder="Copy file a.txt to b.txt">
+                                        </div>
+                                        <div class="controls">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                            <button type="submit" class="btn btn-success" data-loading-text="Adding..." autocomplete="off">Add</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingTwo" class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                <h4 class="panel-title">Move</h4>
+                            </div>
+                            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                                <div class="panel-body">
+                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingThree" class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                <h4 class="panel-title">Remove</h4>
+                            </div>
+                            <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                                <div class="panel-body">
+                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END: Modals  -->
+
+    <div class="page-header">
+        <h1>New scenario</h1>
+    </div>
+
+
+    <div class="panel panel-primary hidden">
+        <div class="panel-heading">
+            <h4 class="panel-title">Pull settings</h4>
+        </div>
+        <div class="panel-body">
+            <ul>
+                <li>pull</li>
+                <li>pre buil</li>
+                <li>buil</li>
+                <li>post buil</li>
+            </ul>
+
+            variables<br>
+            <ul class="hidden">
+                <li>%startrev% — Start revision ref</li>
+                <li>%endrev% — End revision ref</li>
+                <li>%branch% — The branch of the deployment</li>
+                <li>%count% — This number of deployments in the project</li>
+                <li>%servers% — Names of the servers in this deployment</li>
+                <li>%deployer% — User who started the deployment (if manually deployed)</li>
+                <li>%commitrange% — The start and end commit, separated with a hyphen</li>
+                <li>%projecturl% — The address of this project in Deploy</li>
+                <li>%deploymenturl% — The address of this deployment in Deploy</li>
+                <li>%project% — The name of this project in deploy</li>
+                <li>%status% — The current status of this deployment</li>
+                <li>%environment% — Server environment (development, production etc.)</li>
+                <li>%path% — Server path we're deploying to</li>
+                <li>%username% — Username used to login to the server</li>
+                <li>%password% — Password used to login to the server</li>
+                <li>%groupindex% — If in a server group, the order in which this server is deployed (zero-indexed)</li>
+                <li>%COMMIT% or %REVISION% Commit that is being deployed.</li>
+                <li>%BRANCH% Branch that is being deployed, Git only.</li>
+                <li>%COMMENT% Deployment comment or last commit message for automatic deployments.</li>
+                <li>%USER_NAME% Name of the user who triggered the deployment.</li>
+                <li>%RELEASE_ID% Unique ID for the triggered deployment. Stays same during retries.</li>
+                <li>%TIMESTAMP_UTC% Time when deployment was triggered in UNIX epoch format.</li>
+                <li>%REMOTE_PATH% Remote Path from settings of this particular deployment server.</li>
+                <li>%WORKING_DIR% Working Directory from settings of this particular deployment server.</li>
+                <li>%REPO_NAME% Name of the repository.</li>
+                <li>%ENV_NAME% Name of the current environment.</li>
+                <li>%ROLLBACK?% Either 1 or 0 if deployment is a rollback or not.</li>
+                <li>%FROM_SCRATCH?% Either 1 or 0 if deployment is from scratch or not.</li>
+                <li>%AUTO?% Either 1 or 0 if deployment was triggered automatically or manually.</li>
+                <li>%REPO_URL% URL of a repository that you're deploying.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="panel panel-primary hidden">
+        <div class="panel-heading">
+            <h4 class="panel-title">Before build</h4>
+        </div>
+        <div class="panel-body">
+            <ul class="nav nav-pills nav-stacked" id="sortable">
+              <li class="item"><span class="glyphicon glyphicon-resize-vertical" aria-hidden="true"></span> 1111</li>
+              <li class="item"><span class="glyphicon glyphicon-resize-vertical" aria-hidden="true"></span> 2222</li>
+              <li class="item"><span class="glyphicon glyphicon-resize-vertical" aria-hidden="true"></span> 3333</li>
+              <li class="item"><span class="glyphicon glyphicon-resize-vertical" aria-hidden="true"></span> 4444</li>
+            </ul>
+        </div>
+        <div class="panel-footer">
+            <div class="btn-group">
+                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">Add</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h4 class="panel-title">Tasks</h4>
+        </div>
+        <div class="panel-body">
+            <ul class="nav nav-pills nav-stacked" id="sortable">
+              <li class="item"><span class="glyphicon glyphicon-resize-vertical" aria-hidden="true"></span> 1111</li>
+              <li class="item"><span class="glyphicon glyphicon-resize-vertical" aria-hidden="true"></span> 2222</li>
+              <li class="item"><span class="glyphicon glyphicon-resize-vertical" aria-hidden="true"></span> 3333</li>
+              <li class="item"><span class="glyphicon glyphicon-resize-vertical" aria-hidden="true"></span> 4444</li>
+            </ul>
+        </div>
+        <div class="panel-footer">
+            <div class="btn-group">
+                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">Add Task</button>
+            </div>
+        </div>
+    </div>
+{/block}
+
+{block scripts}
+{include parent}
+    {*<script src="http://jush.sourceforge.net/jush.js"></script>*}
+    {*<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>*}
+    {*<script src="//cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>*}
+    <script>
+    $(function() {
+        $( "#sortable" ).sortable({
+            placeholder: "item ui-sortable-placeholder",
+            forcePlaceholderSize: true,
+            handle: ".glyphicon-resize-vertical",
+            axis: "y",
+            containment: "parent",
+            tolerance: "pointer",
+            opacity: 0.85
+        });
+        $( "#sortable" ).disableSelection();
+
+        $( "#myModal .modal-body .panel .panel-body .controls .btn-success" ).click( function() {
+            $(this).button( "loading" );
+        });
+
+        $( "#myModal .modal-body .panel .panel-body form" ).submit( function(event) {
+            event.preventDefault();
+            $(this).find(".controls .btn-success" ).button('reset');
+            $('#myModal').modal('hide');
+        });
+    });
+    </script>
+{/block}
+
+
+{block head}
+<style>
+</style>
+{/block}

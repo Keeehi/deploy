@@ -1,0 +1,11 @@
+{
+  "name": "isc-main",
+  "version": "0.0.1",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-copy": "~0.7.0",
+    "grunt-contrib-less": "~0.11.3",
+    "grunt-contrib-uglify": "^0.9.1",
+    "grunt-contrib-watch": "~0.6.1"
+  }
+}
