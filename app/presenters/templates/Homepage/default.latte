@@ -3,6 +3,26 @@
         <h1>Deploy new repository <small>Subtext for header</small></h1>
     </div>
 
+    <h2>From GitHub.com</h2>
+    <div class="alert alert-warning" role="alert">... <a n:href="githubLogin-open!">Login using github</a></div>
+
+    <div class="panel panel-primary">
+        {form postForm}
+            {input search}
+        {/form}
+        <div class="list-group" n:inner-snippet="repositories">
+            <a n:foreach="$repositories as $repository" n:href="new url=>'git@github.com:'.$repository->owner->login.'/'.$repository->name.'.git'" n:class="list-group-item, $iterator->getCounter()%4 == 1 ? repository-is-managed">
+                <span>
+                    <span class="label label-info">{$repository->owner->login}</span><strong class="repository"> /&nbsp;{$repository->name} </strong>{if !$repository->private}<span class="label label-success">Public</span>{else}<span class="label label-warning">Private</span>{/if}
+                    <span class="label label-danger" n:if="$iterator->getCounter()%4 == 1">managed</span>
+                </span>
+            </a>
+        </div>
+        <div class="panel-footer text-right">
+            <button type="button" class="btn btn-primary">Next</button>
+        </div>
+    </div>
+
     <h2>From ULR</h2>
     <div class="panel panel-primary">
         <form  class="panel-heading" role="search">
@@ -16,56 +36,6 @@
         </div>
     </div>
 
-    <h2>From GitHub.com</h2>
-    <div class="alert alert-warning" role="alert">... <a n:href="githubLogin-open!">Login using github</a></div>
-
-    <div class="panel panel-primary">
-        <form  class="panel-heading" role="search">
-            <input type="text" class="form-control" placeholder="Search">
-        </form>
-        <div class="list-group">
-
-            <a href="#" n:class="list-group-item, $iterator->getCounter()%4 == 1 ? repository-is-managed" n:foreach="$repositories as $repository">
-                <span>
-                    <span class="label label-info">{$repository->owner->login}</span><strong class="repository"> /&nbsp;{$repository->name} </strong>{if !$repository->private}<span class="label label-success">Public</span>{else}<span class="label label-warning">Private</span>{/if}
-                    <span class="label label-danger" n:if="$iterator->getCounter()%4 == 1">managed</span>
-                </span>
-            </a>
-        </div>
-        <div class="panel-footer text-right">
-            <button type="button" class="btn btn-primary">Next</button>
-        </div>
-    </div>
-
-{*<div class="row">*}
-
-
-    {*<div class="col-xs- 12 col-sm-4 col-md-3">*}
-        {*<div class="list-group">*}
-            {*<a href="#" class="list-group-item active">Cras justo odio</a>*}
-            {*<a href="#" class="list-group-item">Dapibus ac facilisis in</a>*}
-            {*<a href="#" class="list-group-item">Morbi leo risus</a>*}
-            {*<a href="#" class="list-group-item">Porta ac consectetur ac</a>*}
-            {*<a href="#" class="list-group-item">Vestibulum at eros</a>*}
-        {*</div>*}
-    {*</div>*}
-
-    {*<div class="col-xs- 12 col-sm-8 col-md-9">*}
-        {*<p>Zákon sice v některých případech takové „vykoupení“ umožňuje, ale nepřekročitelnou podmínkou pro osvobození je krok k nápravě učiněný dobrovolně.*}
-
-        {*<p>A právě v tom je háček. Více než 700 tisíc korun, které podle žalobců Nečasová na daních dluží, by totiž bývala musela zaplatit ještě předtím, než bylo zahájeno její stíhání.*}
-
-        {*<h3>Nevyváženost přístupu</h3>*}
-        {*<p>„Zákon sice institut účinné lítosti a následný zánik trestní odpovědnosti u trestného činu krácení daně připouští, ale pachatel musí škodlivý následek svého jednání napravit dobrovolně. Po zahájení stíhání už je ale pod tlakem možného trestu a o dobrovolnosti se tak nemůže v takovém případě jednat,“ řekl Právu advokát Jaroslav Ortman.*}
-
-        {*<p class="well well-sm"><a href="#">Čtěte také: Nečasová obviněna z krácení daně za dary. Hrozí jí vězení</a>*}
-        {*<p>S tím souhlasí i šéf unie obhájců a vlivný pražský právník Tomáš Sokol. Komentáře k příslušnému institutu totiž podle něj stanoví, že o dobrovolném doplacení daně se dá mluvit pouze do chvíle, kdy se pachatel reálně dozví o možném trestním postihu za své jednání.*}
-
-        {*<p>Zákon sice podle něj připouští i benevolentnější nastavení účinné lítosti, kdy je možné daně či jiné poplatky odvést až do okamžiku vynesení případného prvoinstančního rozsudku, ale ten se na případ Nagyové nevztahuje.*}
-
-        {*<p>„Týká se to těch, kteří například neodvedou daně nebo poplatky za někoho jiného (např. zaměstnavatel za zaměstnance – pozn. red.). V takovém případě se mohou zvednout klidně při probíhajícím soudu a vše doplatit, a stíhání tak zastavit,“ vysvětlil Sokol.*}
-    {*</div>*}
-{*</div>*}
 {/block}
 
 {block scripts}

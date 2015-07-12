@@ -12,9 +12,11 @@ use Milo\Github\Http\CachedClient;
 use Milo\Github\OAuth\Token;
 use Nette,
 	App\Model;
+use Nette\Application\UI\Form;
 use Nette\Caching\Cache;
 use Nette\Caching\IStorage;
 use Tracy\Debugger;
+use Tracy\OutputDebugger;
 
 
 /**
@@ -33,8 +35,24 @@ class HomepagePresenter extends BasePresenter
         $this->storage = $storage;
     }
 
-    public function renderDefault()
-	{
+    public function postForm_onSubmit(Form $form) {
+        $this->redrawControl('repositories');
+    }
+
+    protected function createComponentPostForm()
+    {
+        $form = new Form();
+        $form->addText('search')
+             ->setAttribute('placeholder', 'eg. Deploy')->setAttribute('class','form-control')->setAttribute('oninput','alarm.setup(this);'); //onpropertychange for <=IE8
+        $form->addSubmit('btn', 'Search');
+
+        $form->getElementPrototype()->class('panel-heading ajax');
+
+        $form->onSubmit[] = array($this, 'postForm_onSubmit');
+        return $form;
+    }
+
+    public function renderDefault($search = null)	{
         $cmd = new Cmd();
         $github = new Github($cmd);
         $configuration = $this->configuration->getConfiguration();
@@ -47,7 +65,7 @@ class HomepagePresenter extends BasePresenter
 
 
 
-        $username = $github->getUsername();
+        $username = "Keeehi";//$github->getUsername();
         $accessToken = $accessTokens[$username];
 
 
@@ -56,7 +74,7 @@ class HomepagePresenter extends BasePresenter
 
         $api = new Api($client);
 
-        if (isset($accessTokens[$github->getUsername()])) {
+        if (isset($accessTokens[$username])) {
             $api->setToken(new Token($accessToken));
         }
     //        $response = $api->get('/user');
@@ -68,7 +86,17 @@ class HomepagePresenter extends BasePresenter
 
         // After some date, drop accept part
         //$response = $api->get('/user/repos', ['per_page'=>15, 'sort'=>'updated']);
-        $response = $api->get('/user/repos', ['per_page'=>15, 'sort'=>'updated'], ['accept' => 'application/vnd.github.moondragon+json']);
-        $this->template->repositories = $api->decode($response);
+
+        if (!empty($search)) {
+            $response = $api->get('/search/repositories', ['q'=>$search, 'per_page'=>15, 'sort'=>'updated'], ['accept' => 'application/vnd.github.moondragon+json']);
+            $this->template->repositories = $api->decode($response)->items;
+        } else {
+            $response = $api->get('/user/repos', ['per_page'=>15, 'sort'=>'updated'], ['accept' => 'application/vnd.github.moondragon+json']);
+            $this->template->repositories = $api->decode($response);
+        }
+
+        Debugger::barDump($response);
+        Debugger::barDump($response->getHeader('x-ratelimit-remaining') . " (Reset at " . Nette\Utils\DateTime::from($response->getHeader('x-ratelimit-reset')) . (new Nette\Utils\DateTime())->diff(Nette\Utils\DateTime::from($response->getHeader('x-ratelimit-reset')))->format(' in %h:%I:%S)'));
+
 	}
 }

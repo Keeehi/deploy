@@ -6,7 +6,7 @@ parameters:
 
 
 php:
-	date.timezone: GMT
+	date.timezone: Europe/Prague
 
 
 application:

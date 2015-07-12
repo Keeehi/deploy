@@ -50,9 +50,9 @@ module.exports = function(grunt) {
                 options: {
                     preserveComments: 'all',
                     beautify: {
-                        "ascii_only": true
-                    },
-                    compress: false
+                        beautify: true
+                    }
+                    //compress: false
                 }
             },
             production: {
@@ -62,9 +62,9 @@ module.exports = function(grunt) {
                     //sourceMap: true,
                     //sourceMapName: "dist/jquery.min.map",
                     //report: "min",
-                    beautify: {
-                        "ascii_only": true
-                    },
+                    //beautify: {
+                        //"ascii_only": true
+                    //},
                     //banner: "/*! jQuery v<%= pkg.version %> | " +
                     //"(c) jQuery Foundation | jquery.org/license */",
                     compress: {
