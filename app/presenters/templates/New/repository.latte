@@ -1,0 +1,53 @@
+{block contentDeploy}
+    <div class="page-header">
+        <h1>Deploy new repository <small>Subtext for header</small></h1>
+    </div>
+
+    <h2>From GitHub.com</h2>
+    <div class="alert alert-warning" role="alert">... <a n:href="githubLogin-open!">Login using github</a></div>
+
+    <div class="panel panel-primary">
+        {form postForm}
+            {input search}
+        {/form}
+        <div class="list-group" n:inner-snippet="repositories">
+            <a n:foreach="$repositories as $repository" n:href="deployScript url=>'git@github.com:'.$repository->owner->login.'/'.$repository->name.'.git'" n:class="list-group-item, $iterator->getCounter()%4 == 1 ? repository-is-managed">
+                <span>
+                    <span class="label label-info">{$repository->owner->login}</span><strong class="repository"> /&nbsp;{$repository->name} </strong>{if !$repository->private}<span class="label label-success">Public</span>{else}<span class="label label-warning">Private</span>{/if}
+                    <span class="label label-danger" n:if="$iterator->getCounter()%4 == 1">managed</span>
+                </span>
+            </a>
+        </div>
+        <div class="panel-footer text-right">
+            <button type="button" class="btn btn-primary">Next</button>
+        </div>
+    </div>
+
+    <h2>From ULR</h2>
+    <div class="panel panel-primary">
+        <form  class="panel-heading" role="search">
+            <h4 class="panel-title">Repository URL</h4>
+        </form>
+        <div class="panel-body">
+            <input type="text" class="form-control" placeholder="username@domain.tld:vendor/repository.git">
+        </div>
+        <div class="panel-footer text-right">
+            <button type="button" class="btn btn-primary">Next</button>
+        </div>
+    </div>
+
+{/block}
+
+{block scripts}
+{include parent}
+{*<script src="http://jush.sourceforge.net/jush.js"></script>*}
+<script>
+</script>
+{/block}
+
+
+{block head}
+{include parent}
+<style>
+</style>
+{/block}

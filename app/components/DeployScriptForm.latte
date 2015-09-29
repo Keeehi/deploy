@@ -1,0 +1,59 @@
+{form $form}
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h4 class="panel-title">Script</h4>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-5 col-md-push-7">
+                    Available variables.
+                    <ul>
+                        <li class="hidden">%startrev% — Start revision ref</li>
+                        <li class="hidden">%endrev% — End revision ref</li>
+                        <li class="hidden">%branch% — The branch of the deployment</li>
+                        <li class="hidden">%count% — This number of deployments in the project</li>
+                        <li class="hidden">%servers% — Names of the servers in this deployment</li>
+                        <li class="hidden">%deployer% — User who started the deployment (if manually deployed)</li>
+                        <li class="hidden">%commitrange% — The start and end commit, separated with a hyphen</li>
+                        <li class="hidden">%projecturl% — The address of this project in Deploy</li>
+                        <li class="hidden">%deploymenturl% — The address of this deployment in Deploy</li>
+                        <li class="hidden">%project% — The name of this project in deploy</li>
+                        <li class="hidden">%status% — The current status of this deployment</li>
+                        <li class="hidden">%environment% — Server environment (development, production etc.)</li>
+                        <li class="hidden">%path% — Server path we're deploying to</li>
+                        <li class="hidden">%username% — Username used to login to the server</li>
+                        <li class="hidden">%password% — Password used to login to the server</li>
+                        <li class="hidden">%groupindex% — If in a server group, the order in which this server is deployed (zero-indexed)</li>
+                        <li><strong>%COMMIT%</strong><span class="hidden"> or %REVISION%</span> Commit that is being deployed.</li>
+                        <li><strong>%BRANCH%</strong> Branch that is being deployed, Git only.</li>
+                        <li class="hidden">%COMMENT% Deployment comment or last commit message for automatic deployments.</li>
+                        <li class="hidden">%USER_NAME% Name of the user who triggered the deployment.</li>
+                        <li class="hidden">%RELEASE_ID% Unique ID for the triggered deployment. Stays same during retries.</li>
+                        <li class="hidden">%TIMESTAMP_UTC% Time when deployment was triggered in UNIX epoch format.</li>
+                        <li class="hidden">%REMOTE_PATH% Remote Path from settings of this particular deployment server.</li>
+                        <li><strong>%WORKING_DIR%</strong> Working Directory from settings of this particular deployment server.</li>
+                        <li><strong>%REPO_NAME%</strong> Name of the repository.</li>
+                        <li><strong>%AUTHOR%</strong> Name of the author.</li>
+                        <li><strong>%GIT_SERVER%</strong> Name of the git server.</li>
+                        <li class="hidden">%ENV_NAME% Name of the current environment.</li>
+                        <li class="hidden">%ROLLBACK?% Either 1 or 0 if deployment is a rollback or not.</li>
+                        <li class="hidden">%FROM_SCRATCH?% Either 1 or 0 if deployment is from scratch or not.</li>
+                        <li class="hidden">%AUTO?% Either 1 or 0 if deployment was triggered automatically or manually.</li>
+                        <li class="hidden">%REPO_URL% URL of a repository that you're deploying.</li>
+                    </ul>
+                </div>
+                <div class="col-md-7 col-md-pull-5">
+                    <div class="form-group" n:if="$form->hasErrors()">
+                        <ul class="errors">
+                            <li n:foreach="$form->errors as $error">{$error}</li>
+                        </ul>
+                    </div>
+                    {input script, class =>'form-control'}
+                </div>
+            </div>
+        </div>
+        <div class="panel-footer text-right">
+            <button n:name="submit" type="submit" class="btn btn-primary">Next</button>
+        </div>
+    </div>
+{/form}

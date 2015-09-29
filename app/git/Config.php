@@ -24,7 +24,7 @@ class Config {
      * @throws \Exception
      */
     function __construct($applicationDirectory) {
-        $dataDirectory = realpath($applicationDirectory . '/../') . '/data';
+        $dataDirectory = realpath($applicationDirectory . '/storage');
         $this->ensureDirectoryExist($dataDirectory.'/x');
         $this->ensureDirectoryExist($dataDirectory);
         $this->configurationFile = $dataDirectory . '/config.neon';

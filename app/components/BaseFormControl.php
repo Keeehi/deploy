@@ -1,5 +1,5 @@
 <?php
-namespace IscCtu\Common\Components\Forms;
+namespace Deploy;
 
 use Nette\Utils\Strings;
 

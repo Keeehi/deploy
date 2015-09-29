@@ -7,6 +7,7 @@ use Deploy\Config;
 use Deploy\Git;
 use Deploy\Github;
 use Deploy\GithubCache;
+use Deploy\IDeployScriptFormFactory;
 use Milo\Github\Api;
 use Milo\Github\Http\CachedClient;
 use Milo\Github\OAuth\Token;
@@ -22,7 +23,7 @@ use Tracy\OutputDebugger;
 /**
  * Homepage presenter.
  */
-class HomepagePresenter extends BasePresenter
+class OverviewPresenter extends BasePresenter
 {
     /** @var Config */
     private $configuration;
@@ -51,6 +52,23 @@ class HomepagePresenter extends BasePresenter
         $form->onSubmit[] = array($this, 'postForm_onSubmit');
         return $form;
     }
+
+
+
+    /** @var IDeployScriptFormFactory @inject */
+    public $deployScriptFormFactory;
+
+    protected function createComponentDeployScriptForm() {
+        $control = $this->deployScriptFormFactory->create();
+        $control->onSuccess[] = $this->deployScriptFormSubmitted;
+
+        return $control;
+    }
+
+    public function deployScriptFormSubmitted($values) {
+        Debugger::barDump($values);
+    }
+
 
     public function renderDefault($search = null)	{
         $cmd = new Cmd();

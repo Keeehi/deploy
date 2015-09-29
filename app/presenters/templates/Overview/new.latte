@@ -1,0 +1,44 @@
+{block contentDeploy}
+    <div class="page-header">
+        <h1>New scenario</h1>
+    </div>
+
+    {control deployScriptForm}
+{/block}
+
+{block scripts}
+{include parent}
+    {*<script src="http://jush.sourceforge.net/jush.js"></script>*}
+    {*<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>*}
+    {*<script src="//cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>*}
+    <script>
+    $(function() {
+        $( "#sortable" ).sortable({
+            placeholder: "item ui-sortable-placeholder",
+            forcePlaceholderSize: true,
+            handle: ".glyphicon-resize-vertical",
+            axis: "y",
+            containment: "parent",
+            tolerance: "pointer",
+            opacity: 0.85
+        });
+        $( "#sortable" ).disableSelection();
+
+        $( "#myModal .modal-body .panel .panel-body .controls .btn-success" ).click( function() {
+            $(this).button( "loading" );
+        });
+
+        $( "#myModal .modal-body .panel .panel-body form" ).submit( function(event) {
+            event.preventDefault();
+            $(this).find(".controls .btn-success" ).button('reset');
+            $('#myModal').modal('hide');
+        });
+    });
+    </script>
+{/block}
+
+
+{block head}
+<style>
+</style>
+{/block}

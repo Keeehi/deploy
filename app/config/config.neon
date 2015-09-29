@@ -25,3 +25,7 @@ services:
 	- Deploy\Config(%appDir%)
 	router: App\RouterFactory::createRouter
 
+
+	- Deploy\IDeployScriptFormFactory
+	- Deploy\Storage(%appDir%)
+

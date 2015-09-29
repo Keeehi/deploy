@@ -16,6 +16,71 @@
     </head>
 
     <body>
-        {include content}
+        <div class="container{*-fluid*}">
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand active" href="#">Deploy</a>
+                    </div>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav">
+                            <li n:class="$presenter->isLinkCurrent('Overview:*') ? active"><a n:href="Overview:">Overview<span n:if="$presenter->isLinkCurrent('Overview:*')" class="sr-only"> (current)</span></a></li>
+                            <li n:class="$presenter->isLinkCurrent('New:*') ? active"><a n:href="New:repository"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> New<span n:if="$presenter->isLinkCurrent('New:*')" class="sr-only"> (current)</span></a></li>
+                            <li n:class="$presenter->isLinkCurrent('History:*') ? active"><a href="#">History<span n:if="$presenter->isLinkCurrent('History:*')" class="sr-only"> (current)</span></a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Link <span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="#">Action 1</a></li>
+                                    <li><a href="#">Action 2</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="#">--photo--</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">-User- <span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="#">Account</a></li>
+                                    <li><a href="#">Settings</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#">Log out</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <div n:foreach="$flashes as $flash" n:class="flash, $flash->type">{$flash->message}</div>
+
+            {include contentDeploy}
+        </div>
+
+        <noscript>
+            <div>
+                <div class="alert alert-danger">
+                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span><span class="sr-only">Error:</span> This application needs javascript.
+                </div>
+            </div>
+        </noscript>
+        {block scripts}
+        {*<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>*}
+        {*<script src="{$basePath}/js/bootstrap/dropdown.js"></script>*}
+        {*<script src="{$basePath}/js/bootstrap/collapse.js"></script>*}
+        {*<script src="{$basePath}/js/bootstrap/transition.js"></script>*}
+        {*<script src="{$basePath}/js/bootstrap/modal.js"></script>*}
+        <script src="{$basePath}/js/deploy.js"></script>
+        {*<script src="//nette.github.io/resources/js/netteForms.min.js"></script>*}
+        {/block}
     </body>
 </html>
