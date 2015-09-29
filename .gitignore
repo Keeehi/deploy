@@ -11,3 +11,4 @@
 /temp/
 /log/
 *.local*
+/app/storage/
